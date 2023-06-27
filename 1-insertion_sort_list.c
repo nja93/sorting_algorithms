@@ -9,9 +9,9 @@ void insertion_sort_list(listint_t **list) {
 	    return; // Empty or single-node list is already sorted
     }
 
-    listint_t *current = (*list)->next;
+	listint_t *current = (*list)->next;
 
-    while (current != NULL) {
+	while (current != NULL) {
         listint_t *temp = current;
 
         while (temp->prev != NULL && temp->n < temp->prev->n) {
