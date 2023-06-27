@@ -1,14 +1,15 @@
 #include "sort.h"
 
 /**
- * insertion_sort_list - fnthat sorts int in a doubly linked list Insertion algo
+ * insertion_sort_list - fn that sorts int in a doubly linked list
+ * using  Insertion algo
  * @list: ptr to the head node of the dounly-linked  list to be sorted
  * Return: sorted list
  */
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *curr, *sorted, *tmp;
-	
+
 	/*check if list is empty or only has one node*/
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
