@@ -1,53 +1,41 @@
-#include "sort.h"
+include "sort.h"
 
-void insertion_sort_list(listint_t **list) {
-    
-	listint_t *current;
-
+/**
+ * insertion_sort_list - sorts a doubly linked list of integers in ascending order using the Insertion sort
+ * @list: pointer to the head node of list to be sorted
+ */
+void insertion_sort_list(listint_t **list)
+{
+	listint_t *current, *sorted, *tmp;
 	
-	if (*list == NULL || (*list)->next == NULL) {
-	    return; // Empty or single-node list is already sorted
-    }
+	/*check if list is empty or only has one node*/
 
-	listint_t *current = (*list)->next;
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
+		return;
 
-	while (current != NULL) {
-        listint_t *temp = current;
+	sorted = *list;
+	current = sorted->next;
 
-        while (temp->prev != NULL && temp->n < temp->prev->n) {
-            // Swap nodes
-            listint_t *prevNode = temp->prev;
-            listint_t *nextNode = temp->next;
+	while (current != NULL)
+	{
+		tmp = current;
+		current = current->next;
 
-            if (prevNode->prev != NULL) {
-                prevNode->prev->next = temp;
-            }
+		while (tmp->prev != NULL && tmp->n < tmp->prev->n)
+		{
+			if (tmp->next != NULL)
+				tmp->next->prev = tmp->prev;
+			tmp->prev->next = tmp->next;
+			tmp->next = tmp->prev;
+			tmp->prev = tmp->next->prev;
+			tmp->next->prev = tmp;
 
-            if (nextNode != NULL) {
-                nextNode->prev = prevNode;
-            }
+			if (tmp->prev != NULL)
+				tmp->prev->next = tmp;
+			else
+				*list = tmp;
 
-            temp->prev = prevNode->prev;
-            temp->next = prevNode;
-            prevNode->prev = temp;
-            prevNode->next = nextNode;
-
-            if (temp->prev == NULL) {
-                *list = temp; // Update head if necessary
-            }
-
-            // Print the list after each swap
-            listint_t *currentNode = *list;
-            while (currentNode != NULL) {
-                printf("%d ", currentNode->n);
-                currentNode = currentNode->next;
-            }
-            printf("\n");
-
-            temp = prevNode; // Continue checking previous nodes
-        }
-
-        current = current->next; // Move to the next node
-    }
+			print_list(*list);
+		}
+	}
 }
-
