@@ -9,7 +9,7 @@
 void swapint_pos(int *num1, int *num2)
 {
 	int tmp;
-
+	/*tmp acts as a placeholder to allow swapping*/
 	tmp = *num1;
 	*num1 = *num2;
 	*num2 = tmp;
@@ -22,7 +22,7 @@ void swapint_pos(int *num1, int *num2)
 void selection_sort(int *array, size_t size)
 {
 	size_t i, j, min_index;
-
+	/*check size of array is greater than 1 an not empty*/
 	if (size < 2 || array == NULL)
 		return;
 
