@@ -1,12 +1,13 @@
-include "sort.h"
+#include "sort.h"
 
 /**
- * insertion_sort_list - sorts a doubly linked list of integers in ascending order using the Insertion sort
- * @list: pointer to the head node of list to be sorted
+ * insertion_sort_list - fnthat sorts int in a doubly linked list Insertion algo
+ * @list: ptr to the head node of the dounly-linked  list to be sorted
+ * Return: sorted list
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current, *sorted, *tmp;
+	listint_t *curr, *sorted, *tmp;
 	
 	/*check if list is empty or only has one node*/
 
@@ -14,12 +15,12 @@ void insertion_sort_list(listint_t **list)
 		return;
 
 	sorted = *list;
-	current = sorted->next;
+	curr = sorted->next;
 
-	while (current != NULL)
+	while (curr != NULL)
 	{
-		tmp = current;
-		current = current->next;
+		tmp = curr;
+		curr = curr->next;
 
 		while (tmp->prev != NULL && tmp->n < tmp->prev->n)
 		{
