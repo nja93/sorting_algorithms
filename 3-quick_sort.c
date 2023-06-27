@@ -49,7 +49,7 @@ int lomuto_partition(int *array, size_t size, int left, int right)
 	return (more);
 }
 /**
- * lomutosort - fn that sorts array
+ * lomuto_sort - fn that sorts array
  * @array: array of int
  * @size: size of array
  * @left: (1st)farthest left index of the subset to sort
